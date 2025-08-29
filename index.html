@@ -4,42 +4,49 @@
     <meta charset="utf-8" />
     <title>Prosperity Visualizer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+    <!-- CSV parsing + charts (browser only) -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header>
-      <h1>Prosperity 3 Visualizer</h1>
-      <div class="controls">
-        <label class="chip">Files <input id="file" type="file" accept=".csv" multiple /></label>
-        <label class="chip">Separator
+      <h1>Prosperity Visualizer</h1>
+      <p>Drop the round CSVs here (semicolon or comma). All parsing stays in your browser.</p>
+    </header>
+
+    <section class="controls">
+      <div class="drop" id="drop">
+        <input id="file" type="file" accept=".csv" multiple />
+        <label for="file">Choose CSV files or drop them here</label>
+      </div>
+      <div class="row">
+        <label>Separator
           <select id="sep">
             <option value=",">Comma</option>
             <option value=";" selected>Semicolon</option>
           </select>
         </label>
-        <label class="chip">Product <select id="product"></select></label>
-        <label class="chip">Day <select id="day"></select></label>
-        <label class="chip">Time
+        <label>Product
+          <select id="product"></select>
+        </label>
+        <label>Day
+          <select id="day"></select>
+        </label>
+        <label>Time
           <input id="ts" type="range" min="0" max="100" value="100" />
           <span id="tsLabel">end</span>
         </label>
       </div>
-    </header>
-
-    <!-- BIG FEATURED CHART (front & center) -->
-    <section class="featured">
-      <div class="card">
-        <h2>Mid + Bid/Ask (Levels 1–3)</h2>
-        <div id="featuredChart" class="chart chart--featured"></div>
-      </div>
     </section>
 
-    <!-- SECONDARY GRID BELOW -->
     <section class="grid">
       <div class="card">
-        <h2>Order Book (1–5)</h2>
+        <h2>Mid / Top of Book</h2>
+        <div id="midChart" class="chart"></div>
+      </div>
+      <div class="card">
+        <h2>Bid/Ask Levels (1–5)</h2>
         <div id="bookChart" class="chart"></div>
       </div>
       <div class="card">
@@ -53,7 +60,7 @@
     </section>
 
     <footer>
-      <small>All parsing stays in your browser. If columns look wrong, switch separator.</small>
+      <small>Tip: if columns look wrong, switch separator.</small>
     </footer>
 
     <script src="./app.js"></script>
