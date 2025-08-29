@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Prosperity Visualizer</title>
+    <title>Prosperity Visualizer — Focused</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <!-- CSV parsing + charts (browser only) -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
     <link rel="stylesheet" href="./styles.css" />
@@ -12,56 +11,31 @@
   <body>
     <header>
       <h1>Prosperity Visualizer</h1>
-      <p>Drop the round CSVs here (semicolon or comma). All parsing stays in your browser.</p>
-    </header>
-
-    <section class="controls">
-      <div class="drop" id="drop">
-        <input id="file" type="file" accept=".csv" multiple />
-        <label for="file">Choose CSV files or drop them here</label>
-      </div>
-      <div class="row">
+      <div class="controls">
+        <label>Files <input id="file" type="file" accept=".csv" multiple /></label>
         <label>Separator
           <select id="sep">
             <option value=",">Comma</option>
             <option value=";" selected>Semicolon</option>
           </select>
         </label>
-        <label>Product
-          <select id="product"></select>
-        </label>
-        <label>Day
-          <select id="day"></select>
-        </label>
+        <label>Product <select id="product"></select></label>
+        <label>Day <select id="day"></select></label>
         <label>Time
           <input id="ts" type="range" min="0" max="100" value="100" />
           <span id="tsLabel">end</span>
         </label>
       </div>
-    </section>
+    </header>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Mid / Top of Book</h2>
-        <div id="midChart" class="chart"></div>
-      </div>
-      <div class="card">
-        <h2>Bid/Ask Levels (1–5)</h2>
-        <div id="bookChart" class="chart"></div>
-      </div>
-      <div class="card">
-        <h2>Trades</h2>
-        <div id="tradesChart" class="chart"></div>
-      </div>
-      <div class="card">
-        <h2>Preview</h2>
-        <pre id="preview"></pre>
-      </div>
-    </section>
+    <main>
+      <div id="chart" class="chart"></div>
+    </main>
 
-    <footer>
-      <small>Tip: if columns look wrong, switch separator.</small>
-    </footer>
+    <script src="./app.js"></script>
+  </body>
+</html>
+
 
     <script src="./app.js"></script>
   </body>
