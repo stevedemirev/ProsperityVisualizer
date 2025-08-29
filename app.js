@@ -1,4 +1,3 @@
-// Minimal, browser-only Prosperity CSV visualizer
 const S = { raw: { prices: [], trades: [], own: [] }, tsFrac: 1.0 };
 
 const $ = (id) => document.getElementById(id);
@@ -112,6 +111,8 @@ function wire() {
     draw();
   });
 }
+
+window.addEventListener("DOMContentLoaded", wire);
 
 window.addEventListener("DOMContentLoaded", wire);
 
