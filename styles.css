@@ -1,14 +1,32 @@
-:root { --bg:#0b1020; --fg:#e8ecff; --muted:#aab2d5; --line:#1f2a52; }
+:root { --bg:#0b1020; --fg:#e8ecff; --muted:#aab2d5; --card:#141a33; --line:#1f2a52; --accent:#6ea8fe; }
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font: 16px/1.4 system-ui, ui-sans-serif; }
 
-header { border-bottom: 1px solid var(--line); padding: 10px 16px; }
-header h1 { margin: 0 0 8px; font-size: 18px; color: #dfe5ff; }
+header { padding: 16px 20px; border-bottom: 1px solid var(--line); }
+header h1 { margin: 0 0 8px; font-size: 20px; color: #dfe5ff; }
 .controls { display: flex; flex-wrap: wrap; gap: 10px; }
-.controls label { display: flex; align-items: center; gap: 8px; background: #141a33; padding: 6px 8px; border-radius: 10px; }
-.controls select, .controls input[type="range"], .controls input[type="file"] {
+.chip { display: flex; align-items: center; gap: 8px; background: var(--card); padding: 6px 10px; border-radius: 10px; }
+.chip select, .chip input[type="file"], .chip input[type="range"] {
   background: #0f1530; color: var(--fg); border: 1px solid #29386e; border-radius: 8px; padding: 6px;
 }
 
-main { height: calc(100vh - 96px); /* header height approx */ }
-.chart { width: 100%; height: 100%; }
+/* Featured section: one big card centered */
+.featured { padding: 14px 20px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px; }
+.card h2 { margin: 6px 6px 10px; font-size: 16px; color: #d6dcff; }
+
+.chart { width: 100%; height: 360px; }
+.chart--featured { height: 60vh; min-height: 420px; } /* BIG chart */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+  padding: 14px 20px 24px;
+}
+
+pre { margin: 0; white-space: pre-wrap; overflow: auto; max-height: 320px;
+  background:#0f1530; border:1px solid #29386e; padding:10px; border-radius:8px; }
+
+footer { padding: 10px 20px; color: var(--muted); border-top: 1px solid var(--line); }
+
